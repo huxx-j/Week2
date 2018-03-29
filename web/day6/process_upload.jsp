@@ -30,11 +30,11 @@
     ServletFileUpload upload = new ServletFileUpload(factory);
     upload.setSizeMax(maxSize);
     upload.setHeaderEncoding("UTF-8");
-    List<FileItem> items = upload.parseRequest(new ServletRequestContext(request)); // request-  각각의 태그를 핸들링해야된다. ( 파일이면 복사 , 변수면 키값 받기 ) // 정보가 있어야 복사를 할 수 있다.// 리퀘스트에서 날아오는 태그들을 분석한다.//분석해서 list에 넣어준다.
+    List<FileItem> items = upload.parseRequest(new ServletRequestContext(request));// request-  각각의 태그를 핸들링해야된다. ( 파일이면 복사 , 변수면 키값 받기 ) // 정보가 있어야 복사를 할 수 있다.// 리퀘스트에서 날아오는 태그들을 분석한다.//분석해서 list에 넣어준다.
     Iterator<FileItem> i = items.iterator();
 
     while(i.hasNext()) {
-        FileItem item = (FileItem)i.next();
+        FileItem item = i.next();
         if(item.isFormField()){
             String name = item.getFieldName();
             String value = item.getString();
